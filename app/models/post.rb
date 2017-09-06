@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   has_many :votes
 
+  validates :title, presence: true
+
   def points
     votes.sum(:value)
   end
