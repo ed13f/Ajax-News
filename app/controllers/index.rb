@@ -8,9 +8,13 @@ get '/posts' do
 end
 
 post '/posts/:id/vote' do
-  post = Post.find(params[:id])
-  post.votes.create(value: 1)
-  redirect "/posts"
+  prep = Post.find(params[:id])
+  prep.votes.create(value: 1)
+  if request.xhr?
+      prep.points.to_s
+  else
+    redirect "/posts"
+  end
 end
 
 delete '/posts/:id' do
