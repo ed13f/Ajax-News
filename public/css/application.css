@@ -63,7 +63,8 @@ article h2 a {
 article p {
   color: #8C8C8C;
   font-size: 7pt;
-  margin: 3px 30px;
+  margin: 3px 10px;
+  display: inline-block;
 }
 
 article p span.points:after {
@@ -124,4 +125,13 @@ form#posts input[type='submit'] {
   color: #8C8C8C;
   vertical-align: sub;
   padding: 1px 0px 0px 0px;
+}
+
+.delete_form a {
+  color: #8C8C8C;
+    font-size: 7pt;
+    margin: 3px 0px;
+}
+article form.delete_form {
+    display: inline-block;
 }
