@@ -10,7 +10,12 @@ end
 post '/posts/:id/vote' do
   post = Post.find(params[:id])
   post.votes.create(value: 1)
-  redirect "/posts"
+
+  if request.xhr?
+  erb "Done", layout: false
+  else
+    redirect "/posts"
+  end
 end
 
 delete '/posts/:id' do

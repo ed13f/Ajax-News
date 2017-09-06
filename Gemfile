@@ -18,6 +18,9 @@ gem 'rake', '~> 12.0.0'
 
 gem 'shotgun'
 
+gem 'pry'
+gem 'pry-byebug'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
