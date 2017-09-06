@@ -18,14 +18,30 @@ post '/posts/:id/vote' do
 end
 
 delete '/posts/:id' do
-  # write logic for deleting posts here.
+  @post = Post.find_by(id: params[:id])
+  if request.xhr?
+    @post.destroy
+
+  else
+    @post.destroy
+
+    redirect "/posts"
+  end
 end
 
 post '/posts' do
-  Post.create( title: params[:title],
-               username: Faker::Internet.user_name,
-               comment_count: rand(1000) )
-  redirect '/posts'
+  post =  Post.create( title: params[:title],
+  username: Faker::Internet.user_name,
+  comment_count: rand(1000) )
+  if post.save
+    if request.xhr?
+
+     erb :_newfile, locals: {post: post}, layout: false
+
+  else
+      redirect '/posts'
+    end
+  end
 end
 
 get '/post/:id' do

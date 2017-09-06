@@ -16,4 +16,27 @@ $(".inline").on("submit", function(event){
       $(points).html(response)
     })
   })
+  $(".outline").on("submit", function(event){
+      event.preventDefault()
+      var form = $(this)
+      $.ajax({
+        url: form.attr("action"),
+        type: 'DELETE'
+      })
+      .done(function() {
+        form.closest('article').remove();
+      })
+    })
+    $("#posts").on("submit",function(event){
+      event.preventDefault()
+      var form = $(this)
+    $.ajax({
+      url: form.attr("action"),
+      method: form.attr("method"),
+      data: form.serialize()
+    })
+    .done(function(response){
+      $(".post-container").append(response)
+    })
+  })
 });
