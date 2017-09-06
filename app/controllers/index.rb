@@ -10,11 +10,22 @@ end
 post '/posts/:id/vote' do
   post = Post.find(params[:id])
   post.votes.create(value: 1)
+  if request.xhr?
+    post.votes.length.to_s
+  else
   redirect "/posts"
+end
 end
 
 delete '/posts/:id' do
   # write logic for deleting posts here.
+  if request.xhr
+    post = Post.find(params[:id])
+    post.destroy
+    redirect "/posts"
+  else
+    redirect "/posts"
+  end
 end
 
 post '/posts' do
