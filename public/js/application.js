@@ -18,6 +18,7 @@ $(document).ready(function() {
       $parentOfInsertLocation = $this.parent().parent().children('p')
       $totalPointsDisplay = $parentOfInsertLocation.children().filter('.points');
       $totalPointsDisplay.remove();
+      $this.css('color', 'red');
       $parentOfInsertLocation.prepend(response);
       console.log(response);
     });
