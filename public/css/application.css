@@ -125,3 +125,12 @@ form#posts input[type='submit'] {
   vertical-align: sub;
   padding: 1px 0px 0px 0px;
 }
+
+.delete_button {
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+  color: #8C8C8C;
+  font-size: 7pt;
+  margin: 3px 30px;
+}

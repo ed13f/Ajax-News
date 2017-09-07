@@ -1,7 +1,41 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $(".post-container").delegate(".vote", "submit", function(){
+  // $(".vote").submit(function(event){
+    event.preventDefault();
+    $form= $(this)
+    $article = $form.closest("article")
+    $.ajax({
+      url: $form.attr("action"),
+      method: $form.attr("method"),
+    })
+    .done(function(response){
+      $article.children("p").children(".points").text(response);
+    })
+  })
+  $(".create_form").submit(function(event){
+    event.preventDefault()
+    $form = $(this)
+    $.ajax({
+      url: $form.attr("action"),
+      method: $form.attr("method"),
+      data:$form.serialize()
+    })
+    .done(function(response){
+      $(".post-container").append(response);
+      $(".text_field").val("");
+    })
+  })
+  $(".post-container").delegate(".delete_form", "click", function(event){
+    event.preventDefault();
+    $form = $(this)
+    $article = $(this).closest("article");
+    $.ajax({
+      url: $form.attr("action"),
+      method: $form.attr("method"),
+      data: $form.serialize()
+    })
+    .done(function(){
+      $article.remove();
+    })
+  })
 });

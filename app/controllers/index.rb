@@ -10,18 +10,33 @@ end
 post '/posts/:id/vote' do
   post = Post.find(params[:id])
   post.votes.create(value: 1)
-  redirect "/posts"
+  vote_count = post.votes.length.to_s
+  if request.xhr?
+    vote_count
+  else
+    redirect "/posts"
+  end
 end
 
 delete '/posts/:id' do
-  # write logic for deleting posts here.
+  Post.find(params[:id]).destroy
+  if request.xhr?
+    puts "hi"
+
+  else
+    redirect "/posts"
+  end
 end
 
 post '/posts' do
-  Post.create( title: params[:title],
+  post = Post.create( title: params[:title],
                username: Faker::Internet.user_name,
                comment_count: rand(1000) )
-  redirect '/posts'
+  if request.xhr?
+    erb :"_article", layout: false, locals: { post: post }
+  else
+    redirect '/posts'
+  end
 end
 
 get '/post/:id' do
