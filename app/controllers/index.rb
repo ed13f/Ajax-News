@@ -11,8 +11,10 @@ post '/posts/:id/vote' do
   post = Post.find(params[:id])
   post.votes.create(value: 1)
 
+  @total_votes = post.votes.count
+
   if request.xhr?
-  erb "Done", layout: false
+    erb :'partials/_votes', layout: false
   else
     redirect "/posts"
   end

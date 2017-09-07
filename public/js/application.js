@@ -7,15 +7,18 @@ $(document).ready(function() {
     $this = $(this);
 
     route = $this.parent().attr('action');
-    console.log(route);
 
     var $ajaxRequest = $.ajax({
       url: route,
       method: 'post',
-      data: 'text'
+      data: 'html'
     })
 
     $ajaxRequest.done(function(response) {
+      $parentOfInsertLocation = $this.parent().parent().children('p')
+      $totalPointsDisplay = $parentOfInsertLocation.children().filter('.points');
+      $totalPointsDisplay.remove();
+      $parentOfInsertLocation.prepend(response);
       console.log(response);
     });
 
