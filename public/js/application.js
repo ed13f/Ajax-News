@@ -17,9 +17,11 @@ $(document).ready(function() {
     $ajaxRequest.done(function(response) {
       $parentOfInsertLocation = $this.parent().parent().children('p')
       $totalPointsDisplay = $parentOfInsertLocation.children().filter('.points');
-      $totalPointsDisplay.remove();
+      debugger
+      // $totalPointsDisplay.remove();
       $this.css('color', 'red');
-      $parentOfInsertLocation.prepend(response);
+      // $parentOfInsertLocation.prepend(response);
+      $totalPointsDisplay.text(response);
       console.log(response);
     });
 

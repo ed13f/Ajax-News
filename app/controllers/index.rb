@@ -13,6 +13,11 @@ post '/posts/:id/vote' do
 
   @total_votes = post.votes.count
 
+  if JSON::JSON_LOADED
+    puts "JSON::JSON_LOADED"
+  end
+
+
   if request.xhr?
     erb :'partials/_votes', layout: false
   else
