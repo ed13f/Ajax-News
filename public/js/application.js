@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  // Upvote
+  // Upvote a post
   $('.upvote-button').on('click', function(event) {
     event.preventDefault();
     var $this = $(this);
@@ -12,25 +12,38 @@ $(document).ready(function() {
       data: $form.serialize()
     }).done(function(response) {
       $this.css('color', 'red');
-      console.log(response);
       $pointsSpan.html(response.votes);
     })
   })
 
-  // Delete
+  // Delete a post
   $('input.delete').on('click', function(event) {
     event.preventDefault();
     var $this = $(this);
     var $form = $this.closest('form');
     $.ajax({
       url: $form.attr('action'),
-      // method: $form.attr('method'),
       method: 'DELETE',
       data: $form.serialize()
     }).done(function(response) {
       $this.closest('article').hide();
-      console.log(response);
     })
   })
+
+  // Create a post
+  $('form#posts').on('submit', function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    $.ajax({
+      url: $form.attr('action'),
+      method: $form.attr('method'),
+      data: $form.serialize()
+    }).done(function(response){
+      console.log(response);
+      $('div.post-container').append(response);
+    })
+  })
+
+
 
 });

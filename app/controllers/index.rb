@@ -22,17 +22,20 @@ delete '/posts/:id' do
   post = Post.find_by(id: params[:id])
   post.destroy
   if request.xhr?
-    "hello"
   else
     redirect '/'
   end
 end
 
 post '/posts' do
-  Post.create( title: params[:title],
+  @post = Post.create( title: params[:title],
                username: Faker::Internet.user_name,
                comment_count: rand(1000) )
-  redirect '/posts'
+  if request.xhr?
+    erb :'partials/_post'
+  else
+    redirect '/posts'
+  end
 end
 
 get '/post/:id' do
