@@ -22,7 +22,10 @@
         <span class='username'><%= post.username %></span>
         <span class='timestamp'><%= post.time_since_creation %></span>
         <span class='comment-count'><%= post.comment_count %></span>
-        <a class="delete" href='/posts/<%= post.id %>'></a>
+        <form method="post" action="/posts/<%= post.id %>"
+          <input type="hidden" name="_method" value="delete">
+          <input class="delete" type="submit" value="Delete">
+        </form>
       </p>
     </article>
 

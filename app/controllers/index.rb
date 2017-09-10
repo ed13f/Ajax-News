@@ -19,7 +19,13 @@ post '/posts/:id/vote' do
 end
 
 delete '/posts/:id' do
-  # write logic for deleting posts here.
+  post = Post.find_by(id: params[:id])
+  post.destroy
+  if request.xhr?
+    "hello"
+  else
+    redirect '/'
+  end
 end
 
 post '/posts' do
