@@ -1,5 +1,5 @@
 <article id="<%= @post.id %>">
-      <form method="post" action='/posts/<%= @post.id %>/vote' class="inline">
+      <form method="post" action='/posts/<%= @post.id %>/vote' class="inline upvote-form">
         <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
       </form>
       <h2><a href='/posts/<%= @post.id %>'><%= @post.title %></a></h2>
@@ -8,7 +8,7 @@
         <span class='username'><%= @post.username %></span>
         <span class='timestamp'><%= @post.time_since_creation %></span>
         <span class='comment-count'><%= @post.comment_count %></span>
-        <form method="post" action="/posts/<%= @post.id %>"
+        <form method="post" action="/posts/<%= @post.id %>">
           <input type="hidden" name="_method" value="delete">
           <input class="delete" type="submit" value="Delete">
         </form>

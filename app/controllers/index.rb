@@ -32,7 +32,7 @@ post '/posts' do
                username: Faker::Internet.user_name,
                comment_count: rand(1000) )
   if request.xhr?
-    erb :'partials/_post'
+    erb :'partials/_post', layout: false
   else
     redirect '/posts'
   end
