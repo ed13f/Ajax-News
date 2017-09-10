@@ -9,10 +9,10 @@ $(document).ready(function() {
       method: $form.attr('method'),
       data: $form.serialize()
     }).done(function(response) {
-      console.log(response);
       $this.css('color', 'red');
+      console.log(response);
       var $span = $this.closest('article').find('span.points');
-      $span.html(response);
+      $span.html(response.votes);
     })
   })
 

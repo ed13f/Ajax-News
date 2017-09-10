@@ -11,7 +11,8 @@ post '/posts/:id/vote' do
   post = Post.find(params[:id])
   post.votes.create(value: 1)
   if request.xhr?
-    "#{post.points}"
+    content_type :json
+    {votes: post.points}.to_json
   else
     redirect "/posts"
   end
