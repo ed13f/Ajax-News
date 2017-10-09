@@ -1,4 +1,5 @@
 $(document).ready(function() {
+<<<<<<< HEAD
   $(".post-container").delegate(".vote", "submit", function(event){
     event.preventDefault();
     $form = $(this)
