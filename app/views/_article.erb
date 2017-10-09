@@ -10,7 +10,7 @@
         <span class='comment-count'><%= post.comment_count %></span>
         <form class="delete" method="post" action="/posts/<%= post.id%>">
           <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="delete">
+          <input id="dbutton" type="submit" value="delete">
         </form>
       </p>
     </article>
