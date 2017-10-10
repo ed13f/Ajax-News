@@ -11,5 +11,5 @@ This program is a challenge complete in my time spent at Dev Bootcamp programmin
 -CSS
 
 ## Overview
- ![alt text](https://github.com/ed13f.Ajax-news.png "Ajax news")
+ ![Ajax news](https://github.com/ed13f/Ajax-News/blob/master/Ajax-news.png?raw=true "Ajax news")
 
