@@ -11,5 +11,5 @@ This program is a challenge complete in my time spent at Dev Bootcamp programmin
 -CSS
 
 ## Overview
- ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+ ![alt text](https://github.com/ed13f.Ajax-news.png "Ajax news")
 
